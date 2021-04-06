@@ -4,11 +4,21 @@ from django.db import models
 class Topic(models.Model):
     topic_name=models.CharField(max_length=100,primary_key=True)
 
+    def __str__(self):
+        return self.topic_name
+
 class webpage(models.Model):
     topic_name=models.ForeignKey(Topic, on_delete=models.CASCADE)
     name=models.CharField(max_length=100)
     url=models.URLField(max_length=200)
 
+    def __str__(self):
+        return self.name
+
+
 class Access_records(models.Model):
     name=models.ForeignKey(webpage, on_delete=models.CASCADE)
-    age=models.DateField()
+    date=models.DateField()
+
+    def __str__(self):
+        return self.date,
